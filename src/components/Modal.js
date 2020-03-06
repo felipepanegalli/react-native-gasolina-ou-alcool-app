@@ -1,21 +1,21 @@
 import React, {useState} from 'react';
 import {Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-const ResultModal = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  const [modalText, setModalText] = useState('');
+const ResultModal = ({text, visible}) => {
+  const [resultText, setResultText] = useState(text);
+  const [isVisible, setIsVisible] = useState(visible);
 
   return (
     <View>
       <Modal
-        visible={modalVisible}
+        visible={isVisible}
         animationType="fade"
         transparent={true}
-        onRequestClose={() => setModalVisible(false)}>
+        onRequestClose={() => setIsVisible(false)}>
         <View style={styles.modalBoxOutline}>
           <View style={styles.modalBox}>
-            <Text style={styles.resultText}>{modalText}</Text>
-            <TouchableOpacity onPress={() => setModalVisible(false)}>
+            <Text style={styles.resultText}>{resultText}</Text>
+            <TouchableOpacity onPress={() => setIsVisible(false)}>
               <View style={styles.primaryButton}>
                 <Text style={styles.textPrimaryButton}>CALCULAR NOVAMENTE</Text>
               </View>

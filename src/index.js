@@ -1,12 +1,10 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
 import Home from './pages/Home';
-import ResultModal from './components/Modal';
 
-const App: () => React$Node = () => {
+const App = () => {
   return (
     <SafeAreaView style={styles.view}>
-      <ResultModal />
       <Home />
     </SafeAreaView>
   );

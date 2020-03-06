@@ -1,19 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
-  Text,
   Image,
-  View,
+  StyleSheet,
+  Text,
   TextInput,
   TouchableOpacity,
-  StyleSheet,
+  View,
 } from 'react-native';
+import ResultModal from '../components/Modal';
 
 const Home = () => {
   const [gasCtl, setGasCtl] = useState('');
   const [aclCtl, setAclCtl] = useState('');
 
-  const calculate = () => {
-    let resultText = '';
+  const [resultText, setResultText] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
+  const handleButtonClick = () => {
     let gas, alc, result;
 
     gas = parseFloat(gasCtl) / 100;
@@ -21,13 +24,21 @@ const Home = () => {
     result = alc / gas;
 
     if (result >= 0.7) {
-      resultText = 'Compensa utilizar Gasolina!';
+      setResultText('Compensa utilizar Gasolina!');
     } else {
-      resultText = 'Compensa utilizar Álcool!';
+      setResultText('Compensa utilizar Álcool!');
     }
 
-    alert(resultText);
+    setTimeout(() => {
+      setShowModal(true);
+    }, 1000);
   };
+
+  useEffect(() => {
+    if (showModal === true) {
+      setShowModal(true);
+    }
+  }, [showModal]);
 
   return (
     <>
@@ -60,12 +71,13 @@ const Home = () => {
             keyboardType="numeric"
           />
         </View>
-        <TouchableOpacity onPress={calculate}>
+        <TouchableOpacity onPress={handleButtonClick}>
           <View style={styles.primaryButton}>
             <Text style={styles.textPrimaryButton}>Calcular</Text>
           </View>
         </TouchableOpacity>
       </View>
+      <ResultModal visible={showModal} text={resultText}/>
     </>
   );
 };
