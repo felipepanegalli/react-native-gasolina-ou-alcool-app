@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {Container, Box, Titulo, SubmitButton, SubmitButtonText} from './styles';
 
 export default class Modal extends Component {
-  // eslint-disable-next-line react/state-in-constructor
   state = '';
 
   // eslint-disable-next-line react/static-property-placement
@@ -15,6 +14,7 @@ export default class Modal extends Component {
 
   render() {
     const {close, resultText} = this.props;
+
     return (
       <Container>
         <Box>
