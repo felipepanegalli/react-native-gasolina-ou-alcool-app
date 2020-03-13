@@ -1,20 +1,13 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
-import Home from './pages/Home';
+import {StatusBar} from 'react-native';
 
-const App = () => {
+import Main from './pages/Main';
+
+export default function App() {
   return (
-    <SafeAreaView style={styles.view}>
-      <Home />
-    </SafeAreaView>
+    <>
+      <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
+      <Main />
+    </>
   );
-};
-
-const styles = StyleSheet.create({
-  view: {
-    backgroundColor: '#5E35B1',
-    flex: 1,
-  },
-});
-
-export default App;
+}

@@ -1,9 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Modal, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const ResultModal = ({text, visible}) => {
   const [resultText, setResultText] = useState(text);
   const [isVisible, setIsVisible] = useState(visible);
+
+  useEffect(() => {
+    if (visible === true) {
+      setResultText(resultText);
+      setIsVisible(isVisible);
+    }
+  }, [visible]);
 
   return (
     <View>
